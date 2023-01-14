@@ -3,11 +3,11 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-	java
-	`maven-publish`
+    java
+    `maven-publish`
 
-	alias(libs.plugins.kotlin)
-	alias(libs.plugins.quilt.loom)
+    alias(libs.plugins.kotlin)
+    alias(libs.plugins.quilt.loom)
 }
 
 val archives_base_name: String by project
@@ -20,96 +20,96 @@ repositories {
 }
 
 dependencies {
-	minecraft(libs.minecraft)
-	mappings(
-		variantOf(libs.quilt.mappings) {
-			classifier("intermediary-v2")
-		}
-	)
+    minecraft(libs.minecraft)
+    mappings(
+        variantOf(libs.quilt.mappings) {
+            classifier("intermediary-v2")
+        }
+    )
 
-	// Mojang mapping
-	/*
-	mappings(
-		loom.layered {
-			mappings(variantOf(libs.quilt.mappings) { classifier("intermediary-v2") })
-			officialMojangMappings()
-		}
-	)
-	*/
+    // Mojang mapping
+    /*
+    mappings(
+        loom.layered {
+            mappings(variantOf(libs.quilt.mappings) { classifier("intermediary-v2") })
+            officialMojangMappings()
+        }
+    )
+    */
 
-	modImplementation(libs.quilt.loader)
-	modImplementation(libs.qfapi)
-	modImplementation(libs.qkl)
+    modImplementation(libs.quilt.loader)
+    modImplementation(libs.qfapi)
+    modImplementation(libs.qkl)
 }
 
 tasks {
-	withType<KotlinCompile> {
-		kotlinOptions {
-			jvmTarget = javaVersion.toString()
-			languageVersion = libs.plugins.kotlin.get().version.requiredVersion.substringBeforeLast('.')
-		}
-	}
+    withType<KotlinCompile> {
+        kotlinOptions {
+            jvmTarget = javaVersion.toString()
+            languageVersion = libs.plugins.kotlin.get().version.requiredVersion.substringBeforeLast('.')
+        }
+    }
 
-	withType<JavaCompile>.configureEach {
-		options.encoding = "UTF-8"
-		options.isDeprecation = true
-		options.release.set(javaVersion)
-	}
+    withType<JavaCompile>.configureEach {
+        options.encoding = "UTF-8"
+        options.isDeprecation = true
+        options.release.set(javaVersion)
+    }
 
-	processResources {
-		filteringCharset = "UTF-8"
-		inputs.property("version", project.version)
+    processResources {
+        filteringCharset = "UTF-8"
+        inputs.property("version", project.version)
 
-		filesMatching("quilt.mod.json") {
-			expand(
-				mapOf(
-					"version" to project.version
-				)
-			)
-		}
-	}
+        filesMatching("quilt.mod.json") {
+            expand(
+                mapOf(
+                    "version" to project.version
+                )
+            )
+        }
+    }
 
-	javadoc {
-		options.encoding = "UTF-8"
-	}
+    javadoc {
+        options.encoding = "UTF-8"
+    }
 
-	wrapper {
-		distributionType = Wrapper.DistributionType.BIN
-	}
+    wrapper {
+        distributionType = Wrapper.DistributionType.BIN
+    }
 
-	jar {
-		from("LICENSE") {
-			rename { "LICENSE_${archives_base_name}" }
-		}
-	}
+    jar {
+        from("LICENSE") {
+            rename { "LICENSE_${archives_base_name}" }
+        }
+    }
 }
 
 val targetJavaVersion = JavaVersion.toVersion(javaVersion)
 if (JavaVersion.current() < targetJavaVersion) {
-	kotlin.jvmToolchain(javaVersion)
+    kotlin.jvmToolchain(javaVersion)
 
-	java.toolchain {
-		languageVersion.set(JavaLanguageVersion.of(javaVersion))
-	}
+    java.toolchain {
+        languageVersion.set(JavaLanguageVersion.of(javaVersion))
+    }
 }
 
 java {
-	withSourcesJar()
-	// withJavadocJar()
+    withSourcesJar()
+    // withJavadocJar()
 
-	sourceCompatibility = targetJavaVersion
-	targetCompatibility = targetJavaVersion
+    sourceCompatibility = targetJavaVersion
+    targetCompatibility = targetJavaVersion
 }
 
 
 publishing {
-	publications {
-		register<MavenPublication>("Maven") {
-			from(components.getByName("java"))
-		}
-	}
+    publications {
+        register<MavenPublication>("Maven") {
+            from(components.getByName("java"))
+        }
+    }
 
-	repositories {
+    repositories {
 
-	}
+    }
 }

@@ -1,47 +1,47 @@
 {
-	"schema_version": 1,
-	"quilt_loader": {
-		"group": "com.pleahmacaka",
-		"id": "example_mod",
-		"version": "${version}",
-		"metadata": {
-			"name": "Example Mod",
-			"description": "QuiltMC Kotlin Template",
-			"contributors": {
-				"PleahMaCaka": "Owner"
-			},
-			"contact": {
-				"homepage": "https://github.com/PleahMaCaka/quilt-template",
-				"issues": "https://github.com/PleahMaCaka/qulit-template/issues",
-				"sources": "https://github.com/PleahMaCaka/qulit-template"
-			},
-			"icon": "assets/example_mod/icon.png"
-		},
-		"intermediate_mappings": "net.fabricmc:intermediary",
-		"entrypoints": {
-			"init": {
-				"adapter": "kotlin",
-				"value": "com.pleahmacaka.example_mod.ExampleMod"
-			}
-		},
-		"depends": [
-			{
-				"id": "quilt_loader",
-				"versions": ">=0.17.0-"
-			},
-			{
-				"id": "quilted_fabric_api",
-				"versions": ">=4.0.0-"
-			},
-			{
-				"id": "qkl",
-				"versions": ">=0.1.4-"
-			},
-			{
-				"id": "minecraft",
-				"versions": ">=1.19.2"
-			}
-		]
-	},
-	"mixin": "example_mod.mixins.json"
+  "schema_version": 1,
+  "quilt_loader": {
+    "group": "com.pleahmacaka",
+    "id": "example_mod",
+    "version": "${version}",
+    "metadata": {
+      "name": "Example Mod",
+      "description": "QuiltMC Kotlin Template",
+      "contributors": {
+        "PleahMaCaka": "Owner"
+      },
+      "contact": {
+        "homepage": "https://github.com/PleahMaCaka/quilt-template",
+        "issues": "https://github.com/PleahMaCaka/qulit-template/issues",
+        "sources": "https://github.com/PleahMaCaka/qulit-template"
+      },
+      "icon": "assets/example_mod/icon.png"
+    },
+    "intermediate_mappings": "net.fabricmc:intermediary",
+    "entrypoints": {
+      "init": {
+        "adapter": "kotlin",
+        "value": "com.pleahmacaka.example_mod.ExampleMod"
+      }
+    },
+    "depends": [
+      {
+        "id": "quilt_loader",
+        "versions": ">=0.17.0-"
+      },
+      {
+        "id": "quilted_fabric_api",
+        "versions": ">=4.0.0-"
+      },
+      {
+        "id": "qkl",
+        "versions": ">=0.1.4-"
+      },
+      {
+        "id": "minecraft",
+        "versions": ">=1.19.2"
+      }
+    ]
+  },
+  "mixin": "example_mod.mixins.json"
 }
