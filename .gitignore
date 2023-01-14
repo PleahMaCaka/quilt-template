@@ -1,0 +1,29 @@
+# Gradle
+.gradle/
+build/
+out/
+classes/
+
+# Quilt Loom
+remappedSrc/
+run/
+
+# macOS
+*.DS_Store
+
+# IDEA
+.idea
+*.iml
+*.ipr
+*.iws
+
+workspace
+.launch
+
+.settings
+.vscode
+bin
+.classpath
+.project
+
+.fleet
