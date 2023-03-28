@@ -11,19 +11,13 @@ run/
 # macOS
 *.DS_Store
 
-# IDEA
+# IDE
 .idea
-*.iml
-*.ipr
-*.iws
-
+.fleet
+.vscode
+.settings
 workspace
 .launch
-
-.settings
-.vscode
 bin
 .classpath
 .project
-
-.fleet
